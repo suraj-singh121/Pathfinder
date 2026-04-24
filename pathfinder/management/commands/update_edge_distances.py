@@ -1,6 +1,7 @@
 # pathfinder/management/commands/update_edge_distances.py
 
 import time
+from urllib import response
 import requests
 from django.core.management.base import BaseCommand
 from pathfinder.models import Edge
@@ -22,7 +23,48 @@ def get_real_distance(from_city, to_city):
             lat2 = float(to_city.latitude),
         )
         response = requests.get(url, timeout=10)
+        '''
+        response.status_code   # 200, 404, 500 etc.
+        response.headers       # content-type, server info etc.
+        response.text          # raw text body (a string)
+        response.content       # raw bytes
+        response.json()        # parses the text body as JSON → gives you a dict
+        '''
         data     = response.json()
+        '''
+        {
+        "code": "Ok",
+        "routes": [
+                {
+                    "distance": 1414020.5,
+                    "duration": 56123.4,
+                    "legs": [
+                            {
+                                "distance": 1414020.5,
+                                "duration": 56123.4,
+                                "summary": "",
+                                "steps": []
+                            }
+                            ],
+                    "weight": 56123.4,
+                    "weight_name": "routability"
+                }
+                ],
+        "waypoints": [
+                    {
+                        "hint": "abc123...",
+                        "distance": 4.5,
+                        "name": "Rajpath",
+                        "location": [77.2090, 28.6139]
+                    },
+                    {
+                    "hint": "xyz789...",
+                    "distance": 2.1,
+                    "name": "Marine Drive",
+                    "location": [72.8777, 19.0760]
+                    }
+                    ]
+        }'''
 
         if data.get('code') == 'Ok':
             # OSRM returns distance in meters — convert to km

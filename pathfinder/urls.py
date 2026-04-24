@@ -9,4 +9,5 @@ urlpatterns = [
     path('add-city/',    views.add_city,  name='add_city'),
     path('add-edge/',    views.add_edge,  name='add_edge'),
     path('history/',     views.history,   name='history'),
+    
 ]

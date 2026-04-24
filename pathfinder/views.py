@@ -129,5 +129,6 @@ def add_edge(request):
 
 
 def history(request):
+    
     searches = SearchHistory.objects.select_related('source', 'destination').all()
     return render(request, 'pathfinder/history.html', {'searches': searches})

@@ -6,13 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}ShortPath{% endblock %}</title>
+    <title>{% block title %} ShortPath{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'pathfinder/css/style.css' %}">
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="{% url 'index' %}" class="brand">🗺️ ShortPath</a>
+        <a href="{% url 'index' %}" class="brand"> Short Path</a>
         <div class="nav-links">
             <a href="{% url 'index' %}">Home</a>
             <a href="{% url 'add_city' %}">Add City</a>
